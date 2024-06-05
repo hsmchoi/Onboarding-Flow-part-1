@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:onboarding_flow_part_1/constants/gaps.dart';
 import 'package:onboarding_flow_part_1/constants/sizes.dart';
+import 'package:onboarding_flow_part_1/screens/CreateAccountScreen/Create_Account_Screen.dart';
 
 class CustomizeExperienceScreen extends StatefulWidget {
-  const CustomizeExperienceScreen({super.key});
+  const CustomizeExperienceScreen({super.key, required bool isSwitchOn});
 
   @override
   State<CustomizeExperienceScreen> createState() =>
@@ -16,6 +17,13 @@ class _CustomizeExperienceScreenState extends State<CustomizeExperienceScreen> {
   void _onSubmit() {
     if (_switchValue) {
       // 다음 페이지로 이동하는 로직 (Navigator.push)
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => CreateAccountScreen(
+              isSwitchOn: _switchValue), // _switchValue 값 전달
+        ),
+      );
     }
   }
 
@@ -31,7 +39,7 @@ class _CustomizeExperienceScreenState extends State<CustomizeExperienceScreen> {
             'Cancel',
             style: TextStyle(
               color: Colors.black,
-              fontSize: Sizes.size16,
+              fontSize: Sizes.size10,
             ),
           ),
         ),
@@ -39,7 +47,7 @@ class _CustomizeExperienceScreenState extends State<CustomizeExperienceScreen> {
           'Customize your experience',
           style: TextStyle(
             color: Colors.black,
-            fontSize: Sizes.size16,
+            fontSize: Sizes.size32,
             fontWeight: FontWeight.w700,
           ),
         ),
@@ -89,21 +97,24 @@ class _CustomizeExperienceScreenState extends State<CustomizeExperienceScreen> {
               ],
             ),
             Gaps.v28,
-            GestureDetector(
-              onTap: _onSubmit,
-              child: Container(
-                padding: const EdgeInsets.symmetric(vertical: Sizes.size20),
-                decoration: BoxDecoration(
-                  color: _switchValue ? Colors.black : Colors.grey.shade300,
-                  borderRadius: BorderRadius.circular(Sizes.size5),
-                ),
-                child: const Text(
-                  'Next',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: Sizes.size16,
-                    fontWeight: FontWeight.w700,
+            Align(
+              alignment: Alignment.topRight,
+              child: GestureDetector(
+                onTap: _onSubmit,
+                child: Container(
+                  padding: const EdgeInsets.symmetric(vertical: Sizes.size20),
+                  decoration: BoxDecoration(
+                    color: _switchValue ? Colors.black : Colors.grey.shade300,
+                    borderRadius: BorderRadius.circular(Sizes.size5),
+                  ),
+                  child: const Text(
+                    'Next',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: Sizes.size16,
+                      fontWeight: FontWeight.w700,
+                    ),
                   ),
                 ),
               ),

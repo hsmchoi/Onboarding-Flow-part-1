@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
+import 'package:flutter/services.dart';
 import 'package:onboarding_flow_part_1/constants/gaps.dart';
 import 'package:onboarding_flow_part_1/screens/CreateAccountScreen/Create_Account_Screen.dart';
 
@@ -9,7 +10,7 @@ class InitialScreen extends StatelessWidget {
   void _onCreateAccountTap(BuildContext context) {
     Navigator.of(context).push(
       MaterialPageRoute(
-        builder: (context) => const CreateAccountScreen(),
+        builder: (context) => const CreateAccountScreen(isSwitchOn: false),
       ),
     );
   }
@@ -27,11 +28,7 @@ class InitialScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset(
-              'assets/twitter_logo.png',
-              height: 50,
-              width: 50,
-            ),
+            const Image(image: AssetImage('asset/twitter_logo.png')),
             Gaps.v52,
             const Text(
               'See what\'s happening in the world right now.',
@@ -50,12 +47,14 @@ class InitialScreen extends StatelessWidget {
                   borderRadius: BorderRadius.circular(30),
                 ),
               ),
-              child: Row(
+              child: const Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Image.asset('assets/google_logo.png', height: 24),
+                  Image(
+                    image: AssetImage('asset/google_logo.png'),
+                  ),
                   Gaps.h10,
-                  const Text('Continue with Google'),
+                  Text('Continue with Google'),
                 ],
               ),
             ),
