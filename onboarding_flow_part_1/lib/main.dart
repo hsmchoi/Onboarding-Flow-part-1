@@ -14,7 +14,6 @@ class Onboardingflowpart1 extends StatelessWidget {
     return MaterialApp(
       title: 'Onboardingflowpart1',
       theme: ThemeData(
-
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
         cardColor: Colors.white,
@@ -24,4 +23,3 @@ class Onboardingflowpart1 extends StatelessWidget {
     );
   }
 }
-
